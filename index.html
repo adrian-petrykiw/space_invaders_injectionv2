@@ -4,6 +4,43 @@
 <head>
   <meta charset="utf-8">
   <title>Space Invaders</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <script>
+    const FirebaseConfig = {
+      apiKey: "AIzaSyCxgHZsgubU8_rXXISEnWkjvqCrdqumAgI",
+      authDomain: "todo-app-7da7d.firebaseapp.com",
+      projectId: "todo-app-7da7d",
+      storageBucket: "todo-app-7da7d.appspot.com",
+      messagingSenderId: "375869410092",
+      appId: "1:375869410092:web:421853fbf9524a546e3a89",
+      measurementId: "G-NGNNDWCY3G"
+    };
+    firebase.initializeApp(FirebaseConfig);
+    const db = firebase.firestore();
+    
+
+
+    function fetchImage() {
+      db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
+        if (doc.exists) {
+          const image = doc.data().imageurl;
+          document.getElementById('defender').src = image;
+          // console.log("Image URL:", doc.data().imageurl);
+          console.log("Injected " + doc.data().imageurl);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("Injection failed!");
+        }
+      }).catch((error) => {
+        console.log("Error getting document:", error);
+      });
+    }
+
+    fetchImage();
+
+  </script>
   <script src="bundle.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/index.css">
   <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
@@ -115,48 +152,6 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.5/howler.core.min.js"></script>
-
-  <script>
-    document.getElementById('defender').src = 'https://www.62icon.com/client/assets/img/like-icon.svg';
-  </script>
-
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
-  <script>
-    const FirebaseConfig = {
-      apiKey: "AIzaSyCxgHZsgubU8_rXXISEnWkjvqCrdqumAgI",
-      authDomain: "todo-app-7da7d.firebaseapp.com",
-      projectId: "todo-app-7da7d",
-      storageBucket: "todo-app-7da7d.appspot.com",
-      messagingSenderId: "375869410092",
-      appId: "1:375869410092:web:421853fbf9524a546e3a89",
-      measurementId: "G-NGNNDWCY3G"
-    };
-    firebase.initializeApp(FirebaseConfig);
-    const db = firebase.firestore();
-    
-
-
-    function fetchImage() {
-      db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
-        if (doc.exists) {
-          const image = doc.data().imageurl;
-          document.getElementById('defender').src = image;
-          // console.log("Image URL:", doc.data().imageurl);
-          console.log("Injected " + doc.data().imageurl);
-        } else {
-          // doc.data() will be undefined in this case
-          console.log("Injection failed!");
-        }
-      }).catch((error) => {
-        console.log("Error getting document:", error);
-      });
-    }
-
-    fetchImage();
-
-  </script>
 </body>
 
 </html>
