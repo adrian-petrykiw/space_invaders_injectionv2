@@ -23,9 +23,9 @@
 
 
     function fetchShipImage() {
-      db.collection("nftpic").doc("shipnftpic").get().then((doc) => {
+      db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
         if (doc.exists) {
-          const image = doc.data().imageurl;
+          const image = doc.data().shipImageUrl;
           document.getElementById('defender').src = image;
           // console.log("Image URL:", doc.data().imageurl);
           console.log("Injected " + doc.data().imageurl);
@@ -39,9 +39,9 @@
     }
 
     function fetchInvaderOneImage() {
-      db.collection("nftpic").doc("invaderonenftpic").get().then((doc) => {
+      db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
         if (doc.exists) {
-          const image = doc.data().imageurl;
+          const image = doc.data().invaderImageURL;
           document.getElementById('invader-1').src = image;
           // console.log("Image URL:", doc.data().imageurl);
           console.log("Injected " + doc.data().imageurl);
@@ -55,6 +55,7 @@
     }
 
     fetchShipImage();
+    fetchInvaderOneImage();
 
   </script>
   <script src="bundle.js"></script>
