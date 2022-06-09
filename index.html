@@ -22,13 +22,13 @@
     
 
 
-    function fetchImage() {
+    function fetchShipImage() {
       db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
         if (doc.exists) {
-          const image = doc.data().imageurl;
+          const image = doc.data().shipImageUrl;
           document.getElementById('defender').src = image;
           // console.log("Image URL:", doc.data().imageurl);
-          console.log("Injected " + doc.data().imageurl);
+          console.log("Injected " + doc.data().shipImageUrl);
         } else {
           // doc.data() will be undefined in this case
           console.log("Injection failed!");
@@ -38,7 +38,25 @@
       });
     }
 
-    fetchImage();
+    function fetchInvaderOneImage() {
+      db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
+        if (doc.exists) {
+          const image = doc.data().invaderImageURL;
+          document.getElementById('invader-1').src = image;
+          document.getElementById('invader-2').src = image;
+          // console.log("Image URL:", doc.data().imageurl);
+          console.log("Injected " + doc.data().invaderImageURL);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("Injection failed!");
+        }
+      }).catch((error) => {
+        console.log("Error getting document:", error);
+      });
+    }
+
+    fetchShipImage();
+    fetchInvaderOneImage();
 
   </script>
   <script src="bundle.js"></script>
