@@ -41,9 +41,9 @@
     function fetchInvaderOneImage() {
       db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
         if (doc.exists) {
-          const image = doc.data().invaderImageURL;
-          document.getElementById('invader-1').src = image;
-          document.getElementById('invader-2').src = image;
+          const image2 = doc.data().invaderOneImageURL;
+          document.getElementById('invader-1').src = image2;
+          document.getElementById('invader-2').src = image2;
           // console.log("Image URL:", doc.data().imageurl);
           console.log("Injected " + doc.data().invaderOneImageURL);
         } else {
@@ -58,9 +58,9 @@
     function fetchInvaderTwoImage() {
       db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
         if (doc.exists) {
-          const image = doc.data().invaderImageURL;
-          document.getElementById('soldier-1').src = image;
-          document.getElementById('soldier-2').src = image;
+          const image3 = doc.data().invaderTwoImageURL;
+          document.getElementById('soldier-1').src = image3;
+          document.getElementById('soldier-2').src = image3;
           // console.log("Image URL:", doc.data().imageurl);
           console.log("Injected " + doc.data().invaderTwoImageURL);
         } else {
@@ -75,9 +75,9 @@
     function fetchInvaderThreeImage() {
       db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
         if (doc.exists) {
-          const image = doc.data().invaderImageURL;
-          document.getElementById('grunt-1').src = image;
-          document.getElementById('grunt-2').src = image;
+          const image4 = doc.data().invaderThreeImageURL;
+          document.getElementById('grunt-1').src = image4;
+          document.getElementById('grunt-2').src = image4;
           // console.log("Image URL:", doc.data().imageurl);
           console.log("Injected " + doc.data().invaderThreeImageURL);
         } else {
@@ -89,26 +89,26 @@
       });
     }
 
-    function fetchInvaderUfoImage() {
-      db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
-        if (doc.exists) {
-          const image = doc.data().invaderImageURL;
-          document.getElementById('ufo').src = image;
-          // console.log("Image URL:", doc.data().imageurl);
-          console.log("Injected " + doc.data().invaderUfoImageURL);
-        } else {
-          // doc.data() will be undefined in this case
-          console.log("Injection failed!");
-        }
-      }).catch((error) => {
-        console.log("Error getting document:", error);
-      });
-    }
+    // function fetchInvaderUfoImage() {
+    //   db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
+    //     if (doc.exists) {
+    //       const image = doc.data().invaderImageURL;
+    //       document.getElementById('ufo').src = image;
+    //       // console.log("Image URL:", doc.data().imageurl);
+    //       console.log("Injected " + doc.data().invaderUfoImageURL);
+    //     } else {
+    //       // doc.data() will be undefined in this case
+    //       console.log("Injection failed!");
+    //     }
+    //   }).catch((error) => {
+    //     console.log("Error getting document:", error);
+    //   });
+    // }
 
     fetchInvaderOneImage();
-    fetchInvaderTwoeImage();
+    fetchInvaderTwoImage();
     fetchInvaderThreeImage();
-    fetchInvaderUfoImage();
+    // fetchInvaderUfoImage();
     fetchShipImage();
     
 
