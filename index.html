@@ -45,7 +45,7 @@
           document.getElementById('invader-1').src = image;
           document.getElementById('invader-2').src = image;
           // console.log("Image URL:", doc.data().imageurl);
-          console.log("Injected " + doc.data().invaderImageURL);
+          console.log("Injected " + doc.data().invaderOneImageURL);
         } else {
           // doc.data() will be undefined in this case
           console.log("Injection failed!");
@@ -55,8 +55,62 @@
       });
     }
 
-    fetchShipImage();
+    function fetchInvaderTwoImage() {
+      db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
+        if (doc.exists) {
+          const image = doc.data().invaderImageURL;
+          document.getElementById('soldier-1').src = image;
+          document.getElementById('soldier-2').src = image;
+          // console.log("Image URL:", doc.data().imageurl);
+          console.log("Injected " + doc.data().invaderTwoImageURL);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("Injection failed!");
+        }
+      }).catch((error) => {
+        console.log("Error getting document:", error);
+      });
+    }
+
+    function fetchInvaderThreeImage() {
+      db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
+        if (doc.exists) {
+          const image = doc.data().invaderImageURL;
+          document.getElementById('grunt-1').src = image;
+          document.getElementById('grunt-2').src = image;
+          // console.log("Image URL:", doc.data().imageurl);
+          console.log("Injected " + doc.data().invaderThreeImageURL);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("Injection failed!");
+        }
+      }).catch((error) => {
+        console.log("Error getting document:", error);
+      });
+    }
+
+    function fetchInvaderUfoImage() {
+      db.collection("nftpic").doc("currentnftpic").get().then((doc) => {
+        if (doc.exists) {
+          const image = doc.data().invaderImageURL;
+          document.getElementById('ufo').src = image;
+          // console.log("Image URL:", doc.data().imageurl);
+          console.log("Injected " + doc.data().invaderUfoImageURL);
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("Injection failed!");
+        }
+      }).catch((error) => {
+        console.log("Error getting document:", error);
+      });
+    }
+
     fetchInvaderOneImage();
+    fetchInvaderTwoeImage();
+    fetchInvaderThreeImage();
+    fetchInvaderUfoImage();
+    fetchShipImage();
+    
 
   </script>
   <script src="bundle.js"></script>
